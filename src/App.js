@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Suspense, SuspenseList } from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const Feed = React.lazy(() => import('./components/Feed'));
+const WhoToFollow = React.lazy(() => import('./components/WhoToFollow'));
+const TrendsForYou = React.lazy(() => import('./components/TrendsForYou'));
+
+const App = () => {
+    return (
+        <div className="App">
+            <div className="Column Column--left">
+                Icons
+            </div>
+            <SuspenseList>
+                <div className="Column Column--middle">
+                    <Suspense fallback="Loading..">
+                        <Feed />
+                    </Suspense>
+                </div>
+                <div className="Column Column--right">
+                    <Suspense fallback="Loading..">
+                        <WhoToFollow />
+                    </Suspense>
+                    <Suspense fallback="Loading..">
+                        <TrendsForYou />
+                    </Suspense>
+                </div>
+            </SuspenseList>
+        </div>
+    );
 }
 
 export default App;
