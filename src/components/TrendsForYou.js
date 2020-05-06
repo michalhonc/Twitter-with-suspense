@@ -1,11 +1,38 @@
 import React from 'react';
+import './TrendsForYou.css';
 
-const TrendsForYour = () => {
+import { wrapPromise } from '../utils/wrapPromise';
+import { fetchWithBearer } from '../utils/fetchWithBearer';
+
+const fetchTrendsForYou = async () => {
+    const result = await fetchWithBearer('https://newsapi.org/v2/top-headlines?country=us').then(r => r.json());
+    return result;
+}
+
+const resource = wrapPromise(fetchTrendsForYou);
+
+const TrendsForYou = () => {
+    const trends = resource.read();
     return (
-        <div>
-            <h2>TrendsForYour</h2>
+        <div className="TrendsForYou">
+            <h2>Trends For You</h2>
+            {trends.articles.slice(0, 3).map((trend) => (
+                <div>
+                    <span>{trend.source.name}</span>
+                    <p>{getRandomIntInclusive(200, 900)}K Tweets</p>
+                </div>
+            ))}
+            <a href="#">
+                Show more
+            </a>
         </div>
     );
 };
 
-export default TrendsForYour;
+function getRandomIntInclusive(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive 
+}
+
+export default TrendsForYou;

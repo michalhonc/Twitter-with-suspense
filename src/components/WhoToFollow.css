@@ -1,0 +1,21 @@
+.WhoToFollow {
+    border-radius: 15px;
+    border: 1px solid rgba(67, 177, 244, 0.5);
+    padding: 15px;
+    margin: 15px;
+}
+
+.WhoToFollow-item {
+    display: flex;
+}
+
+.WhoToFollow-item button {
+    margin: 0;
+    padding: 0;
+    height: 50px;
+    background: transparent;
+    border: 1px solid rgba(67, 177, 244, 0.5);
+    color: rgb(67, 177, 244);
+    border-radius: 15px;
+    width: 150px;
+}
