@@ -1,5 +1,4 @@
 import React from 'react';
-import Loading from '../loading.svg';
 import './Loader.css';
 
 export const Loader = ({ className }) => (

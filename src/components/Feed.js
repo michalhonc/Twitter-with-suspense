@@ -2,10 +2,10 @@ import React from 'react';
 import './Feed.css';
 
 import { wrapPromise } from '../utils/wrapPromise';
-import { fetchWithBearer } from '../utils/fetchWithBearer';
+import { fetchWithKey } from '../utils/fetchWithKey';
 
 const fetchFeed = async () => {
-    const result = await fetchWithBearer('https://newsapi.org/v2/top-headlines?country=us').then(r => r.json());
+    const result = await fetchWithKey('https://newsapi.org/v2/top-headlines?country=us').then(r => r.json());
     return result;
 }
 

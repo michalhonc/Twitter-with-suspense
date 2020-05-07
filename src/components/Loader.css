@@ -1,4 +1,4 @@
-@keyframes circle__svg {
+@keyframes animationCircle {
     0% {
         transform: rotate(0deg);
     }
@@ -13,7 +13,7 @@
 }
 .Loader-circle {
     transform-origin: center;
-    animation-name: circle__svg;
+    animation-name: animationCircle;
     animation-duration: 1s;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
